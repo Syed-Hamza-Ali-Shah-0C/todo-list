@@ -14,8 +14,7 @@ import {Observable} from "rxjs";
       <label for="search">Search...</label>
       <input id="search" type="text" [(ngModel)]="searchTerm" (input)="filterTodos()" />
       <app-progress-bar *ngIf="!loaded"></app-progress-bar>
-      <app-todo-item *ngFor="let todo of filteredTodos" [item]="todo"></app-todo-item>
-
+      <app-todo-item *ngFor="let todo of filteredTodos" [item]="todo" (click)="todoItem.onDelete()" #todoItem></app-todo-item>
     </div>
   `,
   styleUrls: ['app.component.scss']

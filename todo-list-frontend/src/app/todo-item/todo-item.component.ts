@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Todo} from "../todo.service";
+import {Todo, TodoService} from "../todo.service";
 
 @Component({
   selector: 'app-todo-item',
@@ -16,6 +16,7 @@ import {Todo} from "../todo.service";
 export class TodoItemComponent {
 
   @Input() item!: Todo;
+  constructor(private todoService: TodoService) {}
 
   get color() {
     switch (this.item.priority) {
@@ -26,5 +27,9 @@ export class TodoItemComponent {
       case 3:
         return 'red';
     }
+  }
+  onDelete() {
+    this.todoService.remove(this.item.id).subscribe(() => {
+    });
   }
 }
